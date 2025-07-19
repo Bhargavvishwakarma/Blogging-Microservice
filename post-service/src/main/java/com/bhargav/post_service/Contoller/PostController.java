@@ -44,6 +44,7 @@ public class PostController {
 
     @PutMapping("/{id}")
     public ResponseEntity<PostEntity> update(@PathVariable Long id, @RequestBody PostEntity post) {
+        post.setId(id);
         return ResponseEntity.status(HttpStatus.OK).body(postService.updatePost(post));
     }
 
