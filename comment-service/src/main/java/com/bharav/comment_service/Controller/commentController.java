@@ -30,11 +30,12 @@ public class commentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<List<CommentEntity>> getCommentByPostId(@PathVariable Long postId) {
+    public ResponseEntity<List<CommentEntity>> getCommentByPostId(@PathVariable("id") Long postId) {
         return ResponseEntity.ok(commentService.getCommentByPostId(postId));
     }
 
-    public ResponseEntity<String> deteletCommnetBtId(@PathVariable Long postId) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteCommentById(@PathVariable("id") Long postId) {
         commentService.deleteCommnetById(postId);
         return ResponseEntity.ok("Deleted");
     }
